@@ -1,0 +1,61 @@
+<h2 mat-dialog-title> {{tituloAccion}} Proveedor </h2>
+
+<mat-dialog-content>
+
+    <form [formGroup]="formularioProveedor">
+        <mat-grid-list cols="1" rowHeight="80px">
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput autocomplete="off" formControlName="nombre">
+                    <mat-icon matSuffix>person</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Documento</mat-label>
+                    <input matInput autocomplete="off" formControlName="documento">
+                    <mat-icon matSuffix>description</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Telefono</mat-label>
+                    <input matInput autocomplete="off" formControlName="telefono">
+                    <mat-icon matSuffix>phone</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Correo</mat-label>
+                    <input matInput autocomplete="off" formControlName="correo">
+                    <mat-icon matSuffix>email</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Estado</mat-label>
+                    <mat-select formControlName="Estado">
+                        <mat-option value="1">Activo</mat-option>
+                        <mat-option value="0">No Activo</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </form>
+
+</mat-dialog-content>
+
+
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="warn">Volver</button>
+    <button mat-raised-button color="primary" [disabled]="formularioProveedor.invalid" (click)="guardarEditar_Proveedor()">{{botonAccion}}</button>
+</mat-dialog-actions>

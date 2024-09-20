@@ -1,0 +1,50 @@
+<h2 mat-dialog-title> {{tituloAccion}} Cliente </h2>
+
+<mat-dialog-content>
+
+    <form [formGroup]="formularioCliente">
+        <mat-grid-list cols="1" rowHeight="80px">
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput autocomplete="off" formControlName="nombre">
+                    <mat-icon matSuffix>person</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Documento</mat-label>
+                    <input matInput autocomplete="off" formControlName="documento">
+                    <mat-icon matSuffix>description</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Telefono</mat-label>
+                    <input matInput autocomplete="off" formControlName="telefono">
+                    <mat-icon matSuffix>phone</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Correo</mat-label>
+                    <input matInput autocomplete="off" formControlName="correo">
+                    <mat-icon matSuffix>mail</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+        </mat-grid-list>
+    </form>
+
+</mat-dialog-content>
+
+
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="warn">Volver</button>
+    <button mat-raised-button color="primary" [disabled]="formularioCliente.invalid" (click)="guardarEditar_Cliente()">{{botonAccion}}</button>
+</mat-dialog-actions>

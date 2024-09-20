@@ -1,0 +1,71 @@
+<h1 style="margin: 20px 0px 0px 40px;"> Relación Producto Proveedor </h1>
+
+<mat-card style="margin: 20px 40px 40px 40px; padding: 20px;">
+    
+    <!-- Modal de agregar un usuario -->
+    <mat-card-title style="padding: 20px;">
+        <button mat-raised-button style="background-color: #44b3ff;" (click)="nuevoPP()">
+            <mat-icon mat-list-icon>add</mat-icon>
+            Nuevo PP
+        </button>
+    </mat-card-title>
+
+
+    <mat-divider></mat-divider>
+
+
+    <mat-card-content class="dashboard-card-content" style="padding-top: 20px;">
+        
+        <mat-form-field  appearance="outline" >
+            <mat-label>Buscar</mat-label>
+            <input matInput (keyup)="aplicarFiltroTabla($event)" #input> 
+        </mat-form-field>
+
+        <div class="mat-elevation-z2">
+
+            <!-- Relacionamos la tabla con la fuente de origen -->
+            <table mat-table [dataSource]="dataListaPP">
+
+                <ng-container matColumnDef="idProducto">
+                    <th mat-header-cell *matHeaderCellDef> Producto </th>
+                    <td mat-cell *matCellDef="let element"> {{element.nombreProducto }} </td>
+                </ng-container>
+                <ng-container matColumnDef="idProveedor">
+                    <th mat-header-cell *matHeaderCellDef> Proveedor </th>
+                    <td mat-cell *matCellDef="let element"> {{element.nombreProveedor}} </td>
+                </ng-container>
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef style="width: 80px;"></th>
+                    <td mat-cell *matCellDef="let element"> 
+
+                        <button mat-icon-button color="primary" (click)="editarPP(element)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+
+                        <button mat-icon-button color="warn" (click)="eliminarPP(element)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <!-- Origen de las columnas de la tabla -->
+                <tr mat-header-row *matHeaderRowDef="columnasTablas"> </tr>
+
+                <!-- Itera por cada una de la filas  de la data que tenemos -->
+                <tr mat-row *matRowDef="let row; columns: columnasTablas;"> </tr>
+
+                <!-- Muestra una fila en caso de que no haya ninguna informacion -->
+                <tr class="mat-row" *matNoDataRow> 
+                    <td class="mat-cell" colspan="4"> No hay datos que coincidad con el filtro "{{input.value}}" </td>
+                </tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons>
+
+            </mat-paginator>
+
+        </div>
+
+    </mat-card-content>
+
+</mat-card>

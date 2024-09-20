@@ -1,0 +1,42 @@
+<h2 mat-dialog-title> {{tituloAccion}} Producto Proveedor</h2>
+
+<mat-dialog-content>
+
+    <form [formGroup]="formularioProductoProveedor">
+        <mat-grid-list cols="2" rowHeight="80px">
+            
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Producto</mat-label>
+                    <mat-select formControlName="idProducto">
+                        <mat-option *ngFor="let item of listaProductos" [value]="item.idProducto">
+                            {{item.nombre}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Proveedor</mat-label>
+                    <mat-select formControlName="idProveedor">
+                        <mat-option *ngFor="let item of listaProveedores" [value]="item.idProveedor">
+                            {{item.nombre}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+
+
+        </mat-grid-list>
+
+    </form>
+
+</mat-dialog-content>
+
+
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="warn">Volver</button>
+    <button mat-raised-button color="primary" [disabled]="formularioProductoProveedor.invalid" (click)="guardarEditar_PP()">{{botonAccion}}</button>
+</mat-dialog-actions>

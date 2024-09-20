@@ -1,0 +1,41 @@
+<mat-toolbar color="primary" class="toolbar">
+    <mat-toolbar-row>
+        <!-- Título -->
+        <h1 class="app-title">Sistema Inventario</h1>
+
+        <!-- Icono de despliegue del menú -->
+        <button mat-icon-button (click)="sidenav.toggle()" aria-label="Menu">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <!-- Espacio flexible para empujar el contenido a la derecha -->
+        <span class="spacer"></span>
+
+        <!-- Información del usuario -->
+        <div class="user-info">
+            <span>{{correoUsuario}} | {{rolUsuario}}</span>
+            <button mat-icon-button (click)="cerrarSesion()" aria-label="Logout">
+                <mat-icon>logout</mat-icon>
+            </button>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- Contenedor principal con menú lateral -->
+<mat-sidenav-container class="sidenav-container">
+    <!-- Menú lateral -->
+    <mat-sidenav #sidenav mode="side" opened="true" class="sidenav" fixedInViewport>
+        <mat-nav-list>
+            <mat-list-item *ngFor="let menu of listaMenus" [routerLink]="menu.url" routerLinkActive="active-menu">
+                <h3 mat-line>{{menu.nombre}}</h3>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <!-- Contenido principal -->
+    <mat-sidenav-content class="sidenav-content">
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
